@@ -55,7 +55,7 @@ export type StrictPropertyCheck<T extends IGDPRProperty, E> = StrictPropertyChec
     StrictPropertyCheckError
 >;
 
-let telemetryReporter: TelemetryReporter;
+let telemetryReporter: TelemetryReporter | undefined;
 
 /**
  * Send this & subsequent telemetry only after this promise has been resolved.
@@ -65,13 +65,17 @@ let telemetryReporter: TelemetryReporter;
  * Which must be awaited before sending the telemetry.
  */
 export function publicLog2<E extends ClassifiedEvent<OmitMetadata<T>> = never, T extends IGDPRProperty = never>(
-    eventName: string,
-    data?: StrictPropertyCheck<T, E>
+    _eventName: string,
+    _data?: StrictPropertyCheck<T, E>
 ) {
+    // Telemetry disabled for Cursor Community build.
+    if (!AppInsightsKey) {
+        return;
+    }
     telemetryReporter = telemetryReporter
         ? telemetryReporter
         : disposableStore.add(new TelemetryReporter(AppInsightsKey));
-    telemetryReporter.sendTelemetryEvent(eventName, data);
+    telemetryReporter.sendTelemetryEvent(_eventName, _data);
 }
 
 const urlsAndVersion = new Map<string, string>();
