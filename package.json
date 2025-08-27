@@ -3,7 +3,7 @@
     "displayName": "JupyterHub for Cursor",
     "version": "2025.4.0",
     "description": "Connect to JupyterHub from the Cursor IDE using the Jupyter extension.",
-    "publisher": "cursor-community",
+    "publisher": "zeckem19",
     "preview": true,
     "author": {
         "name": "Cursor Community"
