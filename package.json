@@ -1,26 +1,26 @@
 {
-    "name": "jupyter-hub",
-    "displayName": "JupyterHub",
+    "name": "cursor-jupyter-hub",
+    "displayName": "JupyterHub for Cursor",
     "version": "2025.4.0",
-    "description": "Support for connecting to Jupyter Hub in VS Code along with the Jupyter Extension",
-    "publisher": "ms-toolsai",
+    "description": "Connect to JupyterHub from the Cursor IDE using the Jupyter extension.",
+    "publisher": "cursor-community",
     "preview": true,
     "author": {
-        "name": "Microsoft Corporation"
+        "name": "Cursor Community"
     },
     "extensionDependencies": [
         "ms-toolsai.jupyter"
     ],
     "license": "MIT",
-    "homepage": "https://github.com/Microsoft/vscode-jupyter-hub",
+    "homepage": "https://github.com/zeckem19/cursor-jupyter-hub",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Microsoft/vscode-jupyter-hub"
+        "url": "https://github.com/zeckem19/cursor-jupyter-hub"
     },
     "bugs": {
-        "url": "https://github.com/Microsoft/vscode-jupyter-hub/issues"
+        "url": "https://github.com/zeckem19/cursor-jupyter-hub/issues"
     },
-    "qna": "https://github.com/microsoft/vscode-jupyter/discussions",
+    "qna": "https://github.com/zeckem19/cursor-jupyter-hub/discussions",
     "icon": "icon.png",
     "galleryBanner": {
         "color": "#ffffff",
@@ -77,7 +77,7 @@
         }
     },
     "scripts": {
-        "package": "npm run esbuild-release && vsce package -o ms-toolsai-jupyter-hub-insiders.vsix",
+        "package": "npm run esbuild-release && ovsx package -o cursor-jupyter-hub.vsix",
         "compile": "npm run esbuild",
         "postinstall": "npx vscode-dts 1.82.0",
         "test:unittests": "mocha --config ./build/.mocha.unittests.js.json ./out/**/*.unit.test.js",
@@ -99,7 +99,8 @@
         "test-compile-webpack": "webpack",
         "test-compile-webpack-watch": "webpack --watch",
         "make-extension-pack-for-web-tests": "node ./build/makeExtensionPack.js",
-        "open-in-browser": "vscode-test-web --extensionDevelopmentPath=. ./tmp"
+        "open-in-browser": "vscode-test-web --extensionDevelopmentPath=. ./tmp",
+        "publish:openvsx": "ovsx publish -p $OVSX_TOKEN"
     },
     "dependencies": {
         "@jupyterlab/services": "^7.2.4",
@@ -154,6 +155,7 @@
         "typescript": "^5.2.2",
         "webpack": "^5.95.0",
         "webpack-cli": "^5.1.4",
+        "ovsx": "^0.9.2",
         "ws": "^8.17.1"
     },
     "devDependenciesComments": {

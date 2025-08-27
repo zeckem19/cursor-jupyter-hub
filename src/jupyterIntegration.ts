@@ -31,7 +31,7 @@ export const UserJupyterServerUriListMementoKey = '_builtin.jupyterServerUrlProv
 
 export class JupyterServerIntegration implements JupyterServerProvider, JupyterServerCommandProvider {
     readonly id: string = 'UserJupyterServerPickerProviderId';
-    readonly documentation = Uri.parse('https://aka.ms/vscodeJuptyerExtKernelPickerExistingServer');
+    readonly documentation = Uri.parse('https://github.com/zeckem19/cursor-jupyter-hub#readme');
     private readonly newAuthenticator: Authenticator;
     private readonly disposables: Disposable[] = [];
     private readonly _onDidChangeServers = new EventEmitter<void>();
@@ -56,7 +56,7 @@ export class JupyterServerIntegration implements JupyterServerProvider, JupyterS
         this.disposables.push(collection);
         this.disposables.push(this._onDidChangeServers);
         collection.commandProvider = this;
-        collection.documentation = Uri.parse('https://aka.ms/vscodeJupyterHub');
+        collection.documentation = Uri.parse('https://github.com/zeckem19/cursor-jupyter-hub#readme');
     }
     public dispose() {
         dispose(this.disposables);
